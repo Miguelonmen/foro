@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Feature;
+//namespace Tests\Feature;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+//use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class ExampleTest extends FeatureTestCase   //TestCase
 {
     /**
      * A basic test example.
@@ -17,5 +17,15 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
+    }
+    public function testBasicExample(){
+        $user = factory(\App\Models\User::class)->create([
+            'name' => 'Miguel',
+            'email' => 'm.angelmendoza.c@gmail.com',
+        ]);
+        $this->actingAs($user,'api')
+            ->visit('api/user')
+            ->see('Miguel')
+            ->see('m.angelmendoza.c@gmail.com');       
     }
 }
