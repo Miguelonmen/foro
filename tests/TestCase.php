@@ -3,10 +3,11 @@
 namespace Tests;
 use App\User; 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use CreatesApplication;
 
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
+    
     protected $baseUrl = 'http://localhost';
     protected $defaultUser; 
     
